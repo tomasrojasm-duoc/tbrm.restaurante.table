@@ -2,7 +2,7 @@ package com.table.tbrm.restaurante.table.service.impl;
 
 import com.table.tbrm.restaurante.table.dto.TableRequestDto;
 import com.table.tbrm.restaurante.table.dto.TableResponseDto;
-import com.table.tbrm.restaurante.table.model.Table;
+import com.table.tbrm.restaurante.table.model.TableRestaurant;
 import com.table.tbrm.restaurante.table.repository.TableRepository;
 import com.table.tbrm.restaurante.table.service.TableService;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +18,7 @@ public class TableServiceImpl implements TableService {
 
     private final TableRepository repository;
 
-    private TableResponseDto toDto(Table entity) {
+    private TableResponseDto toDto(TableRestaurant entity) {
         return new TableResponseDto(
                 entity.getId(),
                 entity.getTableNumber(),
@@ -27,8 +27,8 @@ public class TableServiceImpl implements TableService {
         );
     }
 
-    private Table toEntity(TableRequestDto dto) {
-        return new Table(
+    private TableRestaurant toEntity(TableRequestDto dto) {
+        return new TableRestaurant(
                 dto.getId(),
                 dto.getTableNumber(),
                 dto.getCapacity(),
@@ -58,7 +58,7 @@ public class TableServiceImpl implements TableService {
 
     @Override
     public TableResponseDto findByTableNumber(Integer tableNumber) {
-        Table table = repository.findByTableNumber(tableNumber);
+        TableRestaurant table = repository.findByTableNumber(tableNumber);
 
         if (table == null) {
             log.warn("Table not found with table number {}", tableNumber);

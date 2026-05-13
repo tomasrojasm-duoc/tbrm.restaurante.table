@@ -7,11 +7,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
+@Table(name = "restaurant_table")
 @Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Table {
+public class TableRestaurant {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
